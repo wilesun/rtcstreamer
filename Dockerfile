@@ -14,10 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends g++ autoconf au
 	&& fetch --no-history --nohooks webrtc \
 	&& sed -i -e "s|'src/resources'],|'src/resources'],'condition':'rtc_include_tests==true',|" src/DEPS \
 	&& gclient sync \
-	&& cd /webrtc-streamer \
-	&& cmake . && make \
-	&& rm -f *.a && rm -f src/*.o \
-	&& apt-get clean && rm -rf /var/lib/apt/lists/
+	&& cd /webrtc-streamer
 
 # Make port 3478,8000 available to the world outside this container
 EXPOSE 3478
